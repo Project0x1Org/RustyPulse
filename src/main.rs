@@ -16,7 +16,6 @@ async fn main() {
     }
 }
 
-
 /// Pings a Provided URL and Returns a formatted status message.
 /// # Arguments:
 /// * `url` - A string slice containing the target URL (e.g: https://google.com)
@@ -24,7 +23,6 @@ async fn main() {
 /// * `Ok(String)` - if the network request completed, (even if server responded with 403,404,500,...etc)
 /// * `Err(String)` - if the URL is malformed or the server is Unreachable
 async fn check_status(url: &str) -> Result<String, String> {
-
     let ping_result = reqwest::get(url).await;
 
     match ping_result {
@@ -36,9 +34,8 @@ async fn check_status(url: &str) -> Result<String, String> {
             } else {
                 Ok(format!("Server Responded With Error: {}", status.as_u16()))
             }
-        },
+        }
         Err(err) => {
-            
             if err.is_builder() {
                 Err(String::from("Invalid URL format"))
             } else {
@@ -50,12 +47,12 @@ async fn check_status(url: &str) -> Result<String, String> {
 
 /// Helper to capture user input from terminal, structured to be integrated later in GUI.
 /// # Arguments:
-/// * `prompt` - string slice containing description to tell user what to input. 
+/// * `prompt` - string slice containing description to tell user what to input.
 /// # Returns:
 /// * `input(String)` - the input from the user
 fn get_user_input(prompt: &str) -> String {
     print!("{}", prompt);
-    io::stdout().flush().unwrap();  // print prompt to stdout immediately
+    io::stdout().flush().unwrap(); // print prompt to stdout immediately
 
     let mut input = String::new();
     io::stdin()
@@ -64,4 +61,3 @@ fn get_user_input(prompt: &str) -> String {
 
     input.trim().to_string()
 }
-
