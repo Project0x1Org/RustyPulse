@@ -1,4 +1,4 @@
-use std::io::{self, Write}
+use std::io::{self, Write};
 
 #[tokio::main]
 async fn main() {
@@ -22,8 +22,8 @@ async fn main() {
 /// * `url` - A string slice containing the target URL (e.g: https://google.com)
 /// # Returns:
 /// * `Ok(String)` - if the network request completed, (even if server responded with 403,404,500,...etc)
-/// * `Err(String` - if the URL is malformed or the server is Unreachable.
-async check_status(url: &str) -> Result<String, String> {
+/// * `Err(String)` - if the URL is malformed or the server is Unreachable
+async fn check_status(url: &str) -> Result<String, String> {
 
     let ping_result = reqwest::get(url).await;
 
@@ -55,7 +55,7 @@ async check_status(url: &str) -> Result<String, String> {
 /// * `input(String)` - the input from the user
 fn get_user_input(prompt: &str) -> String {
     print!("{}", prompt);
-    io::stdout.flush().unwrap();  // print prompt to stdout immediately
+    io::stdout().flush().unwrap();  // print prompt to stdout immediately
 
     let mut input = String::new();
     io::stdin()
