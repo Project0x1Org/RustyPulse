@@ -1,0 +1,24 @@
+# --- Compiled Artifacts ---
+/target/
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# --- Environment and Secrets ---
+.env
+.env.local
+
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- Backup/Temporary Files ---
+*.swp
+*.bak
+
+
